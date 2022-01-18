@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.pack.Address" table="ADDRESS">
+	
+		<id name="addressId" type="long" column="ADDRESS_ID">
+			<generator class="native" />
+		</id>
+		<property name="street" column="STREET" type="string" length="250" not-null="true"/>
+		<property name="city" column="CITY" type="string" length="50" />
+		<property name="state" column="STATE" type="string" length="50" />
+		<property name="zipcode" column="ZIPCODE" type="string" length="10" />
+		
+		
+		<set name="people"  inverse="true" table="student1">
+		<key column="student_address" />	
+		<one-to-many   class="com.pack.Student"  />
+		</set>
+		
+	</class>
+</hibernate-mapping>
